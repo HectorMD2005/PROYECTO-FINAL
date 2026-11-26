@@ -275,7 +275,7 @@ include "header.php";
                     <article class="location-card">
                         <div>
                             <h3>Parqueo VIP</h3>
-                            <p>Incluido en VIP/M&G · General ₡5,000 (cupos limitados)</p>
+                            <p>Incluido en VIP · General ₡5,000 (cupos limitados)</p>
                         </div>
                     </article>
 

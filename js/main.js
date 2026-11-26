@@ -395,6 +395,111 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     renderArtistsCarousel();
+    // ============================================
+    // 6.1 PROGRAMA DE ACTIVIDADES - GENERADO DESDE ARREGLO
+    // ============================================
+
+    const actividadesData = [
+        {
+            hora: '16:00',
+            actividad: 'Apertura de puertas y bienvenida',
+            responsable: 'Organización del festival',
+            categoria: 'Escenario principal'
+        },
+        {
+            hora: '16:15',
+            actividad: 'Presentación de Tiago PZK',
+            responsable: 'Artista invitado',
+            categoria: 'Escenario principal'
+        },
+        {
+            hora: '17:15',
+            actividad: 'Presentación de Nicki Nicole',
+            responsable: 'Artista invitada',
+            categoria: 'Escenario principal'
+        },
+        {
+            hora: '18:30',
+            actividad: 'Presentación de Álvaro Díaz',
+            responsable: 'Artista invitado',
+            categoria: 'Escenario principal'
+        },
+        {
+            hora: '19:45',
+            actividad: 'Presentación de Duki',
+            responsable: 'Artista invitado',
+            categoria: 'Escenario principal'
+        },
+        {
+            hora: '20:00',
+            actividad: 'Presentación de Milo J',
+            responsable: 'Artista invitado',
+            categoria: 'Escenario principal'
+        },
+        {
+            hora: '21:30',
+            actividad: 'Concierto principal de FEID',
+            responsable: 'Artista principal',
+            categoria: 'Headliner'
+        },
+        {
+            hora: '22:30',
+            actividad: 'Presentación especial de Bizarrap',
+            responsable: 'Invitado sorpresa',
+            categoria: 'Escenario principal'
+        },
+        {
+            hora: '23:30',
+            actividad: 'Cierre principal y After Party',
+            responsable: 'Organización y DJ invitado',
+            categoria: 'Dos escenarios'
+        },
+    ];
+
+    // Genera las tarjetas del programa en servicios.php.
+    function pintarActividades(lista) {
+
+        const contenedor = document.querySelector('#contenedorActividades');
+
+        // En otras páginas no existe este contenedor; no se ejecuta nada.
+        if (!contenedor) return;
+
+        contenedor.innerHTML = '';
+
+        lista.forEach((actividad, index) => {
+
+            const card = document.createElement('article');
+
+            card.className = 'lineup-card reveal';
+            card.setAttribute('role', 'listitem');
+
+            card.style.transitionDelay = `${index * 0.06}s`;
+
+            card.innerHTML = `
+                <div class="lineup-card-content">
+                    <span class="lineup-card-time">
+                        ${actividad.hora}
+                    </span>
+
+                    <h3>${actividad.actividad}</h3>
+
+                    <p>${actividad.responsable}</p>
+
+                    <span class="lineup-card-category">
+                        ${actividad.categoria}
+                    </span>
+                </div>
+            `;
+
+            contenedor.appendChild(card);
+
+            // Activa la animación de aparición de cada tarjeta.
+            revealObserver.observe(card);
+        });
+    }
+
+    // Ejecutar la generación de las diez actividades.
+    pintarActividades(actividadesData);
 
     // ============================================
     // 7. PARALLAX HERO EFFECT (Subtle)

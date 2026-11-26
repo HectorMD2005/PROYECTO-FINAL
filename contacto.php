@@ -66,7 +66,6 @@ include "header.php";
                                 <div class="stat-number" data-count="12847">0</div>
                                 <span class="stat-label">Personas registradas</span>
                             </div>  
-                            </div>
                         </div>
                     </div>
                 </aside>
@@ -126,11 +125,11 @@ include "header.php";
                     <a href="#formulario" class="btn btn-primary" onclick="scrollToForm(); return false;">Seleccionar VIP</a>
                 </article>
 
-                <!-- Premium / Meet & Greet -->
+                <!-- Premium -->
                 <article class="ticket-card" data-tier="premium">
                     <div class="ticket-badge ticket-badge-premium">EXCLUSIVO</div>
                     <div class="ticket-header">
-                        <h3>Meet & Greet</h3>
+                        <h3>All Access</h3>
                         <div class="ticket-price">
                             <span class="currency">₡</span>
                             <span class="amount">120,000</span>
@@ -138,13 +137,13 @@ include "header.php";
                     </div>
                     <ul class="ticket-benefits">
                         <li>Todo lo VIP +</li>
-                        <li>Meet & Greet con 1 artista top</li>
+                        <li>All Access con 1 artista top</li>
                         <li>Foto pro + laminado numerado</li>
                         <li>Merch exclusivo (hoodie+gorra)</li>
                         <li>Acceso soundcheck (sujeto a disp.)</li>
                         <li>Staff dedicado 1:10</li>
                     </ul>
-                    <a href="#formulario" class="btn btn-outline" onclick="scrollToForm(); return false;">Seleccionar Meet & Greet</a>
+                    <a href="#formulario" class="btn btn-outline" onclick="scrollToForm(); return false;">Seleccionar All Access</a>
                 </article>
             </div>
 
@@ -164,7 +163,6 @@ include "header.php";
                         <span class="section-tag">Completa tu registro</span>
                         <h2 id="form-title" class="section-title">Formulario de Inscripción</h2>
                     </header>
-                    <form class="formulario-moderno" action="enviar.php" method="POST" novalidate>
                         <?php if (!empty($formErrors)): ?>
                             <div class="form-errors-summary" role="alert" aria-live="assertive">
                                 <div>
@@ -210,7 +208,7 @@ include "header.php";
 
                             <div class="form-group">
                                 <label for="edad">Edad <span class="requerido">*</span></label>
-                                <input type="number" id="edad" name="edad" placeholder="25" required min="18" max="99" autocomplete="off" aria-describedby="error-edad" value="<?php echo htmlspecialchars($formData['edad'] ?? ''); ?>" <?php echo in_array('La edad debe ser un may a 18 años.', $formErrors) ? 'class="error"' : ''; ?>>
+                                <input type="number" id="edad" name="edad" placeholder="25" required min="18" max="99" autocomplete="off" aria-describedby="error-edad" value="<?php echo htmlspecialchars($formData['edad'] ?? ''); ?>" <?php echo in_array('La edad debe ser un mayor a 18 años.', $formErrors) ? 'class="error"' : ''; ?>>
                                 <span class="error-msg" id="error-edad" aria-live="polite"><?php 
                                     $edadErrors = array_filter($formErrors, fn($e) => str_starts_with($e, 'La edad'));
                                     echo htmlspecialchars(implode(' ', $edadErrors));
@@ -224,7 +222,7 @@ include "header.php";
                                 <option value="">-- Selecciona una categoría --</option>
                                 <option value="general" <?php echo ($formData['categoria'] ?? '') === 'general' ? 'selected' : ''; ?>>General - ₡25,000</option>
                                 <option value="vip" <?php echo ($formData['categoria'] ?? '') === 'vip' ? 'selected' : ''; ?>>VIP Experience - ₡55,000</option>
-                                <option value="meet_greet" <?php echo ($formData['categoria'] ?? '') === 'meet_greet' ? 'selected' : ''; ?>>Meet & Greet - ₡120,000</option>
+                                <option value="meet_greet" <?php echo ($formData['categoria'] ?? '') === 'meet_greet' ? 'selected' : ''; ?>>All Access - ₡120,000</option>
                             </select>
                             <span class="error-msg" id="error-categoria" aria-live="polite"><?php 
                                 $catErrors = array_filter($formErrors, fn($e) => str_starts_with($e, 'Debe seleccionar una categoría'));
@@ -285,7 +283,7 @@ include "header.php";
                                     <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-muted); line-height: 1.8;">
                                         <li style="margin-bottom: 0.75rem;"><strong>General — ₡25,000:</strong> Acceso a ambos escenarios, zona general, food court (15+ food trucks), 4 barras, mercado urbano, baños, lockers (alquiler ₡2,000), hidratación gratis, punto médico.</li>
                                         <li style="margin-bottom: 0.75rem;"><strong>VIP Experience — ₡55,000:</strong> Todo lo de General + zona VIP elevada con vista preferencial, barra premium ILIMITADA (whisky, vodka, gin, ron, cerveza artesanal, cocteles), baños VIP con A/C, lockers GRATIS, zona descanso climatizada, entrada rápida sin filas, pulsera VIP coleccionable, credencial laminada, servicio mesero.</li>
-                                        <li style="margin-bottom: 0.75rem;"><strong>Meet & Greet — ₡120,000:</strong> Todo lo VIP + meet & greet privado con 1 artista (Feid, Milo J, Álvaro Díaz, Nicki Nicole o Duki), foto profesional 15x20cm + digital HD, laminado numerado edición limitada, merch exclusivo (hoodie + gorra + lanyard), acceso soundcheck (sujeto a disp.), entrada prioritaria absoluta, staff dedicado, regalo firmado.</li>
+                                        <li style="margin-bottom: 0.75rem;"><strong>All Access — ₡120,000:</strong> Todo lo VIP + All Access privado con 1 artista (Feid, Milo J, Álvaro Díaz, Nicki Nicole o Duki), foto profesional 15x20cm + digital HD, laminado numerado edición limitada, merch exclusivo (hoodie + gorra + lanyard), acceso soundcheck (sujeto a disp.), entrada prioritaria absoluta, staff dedicado, regalo firmado.</li>
                                     </ul>
                                     <p><strong>Métodos de pago:</strong> Tarjeta (Visa/Mastercard/Amex), Transferencia (BAC/BN/BCR/Popular), SINPE Móvil, Efectivo en puntos autorizados. <strong>Preventa BAC:</strong> 10% dto + 3 cuotas sin intereses.</p>
                                 </div>
@@ -341,13 +339,11 @@ include "header.php";
                             </button>
                             <div class="accordion-content" id="faq3-content" role="region">
                                 <div class="accordion-content-inner">
-                                    <p><strong>Edad mínima: 16 años cumplidos al 12 de diciembre 2026.</strong></p>
+                                    <p><strong>Edad mínima: 18 años cumplidos al 12 de diciembre 2026.</strong></p>
                                     <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-muted); line-height: 1.8;">
-                                        <li style="margin-bottom: 0.75rem;"><strong>Menores de 16 años:</strong> <span style="color: var(--accent-secondary); font-weight: 700;">NO se permite el ingreso</span>, bajo ninguna circunstancia, incluso acompañados de adultos.</li>
-                                        <li style="margin-bottom: 0.75rem;"><strong>16 y 17 años:</strong> Ingreso permitido <strong>SOLO acompañado</strong> de padre, madre o tutor legal (mayor de 25 años) que <strong>debe permanecer dentro del festival todo el tiempo</strong>. Se requiere firmar carta de responsabilidad al ingreso.</li>
-                                        <li style="margin-bottom: 0.75rem;"><strong>18+ años:</strong> Ingreso libre sin restricciones.</li>
+                                        <li style="margin-bottom: 0.75rem;"><strong>Menores de 18 años:</strong> <span style="color: var(--accent-secondary); font-weight: 700;">NO se permite el ingreso</span>, bajo ninguna circunstancia, incluso acompañados de adultos.</li>
                                     </ul>
-                                    <p>Se verifica edad con documento original al ingreso. <strong>No hay excepciones ni devoluciones por edad.</strong> Si compraste para menor de 16 años, puedes transferir la entrada a mayor de 16 (ver FAQ transferencias).</p>
+                                    <p>Se verifica edad con documento original al ingreso. <strong>No hay excepciones ni devoluciones por edad.</strong> Si compraste para menor de 18 años, puedes transferir la entrada a mayor de 18 (ver FAQ transferencias).</p>
                                 </div>
                             </div>
                         </article>
@@ -363,7 +359,7 @@ include "header.php";
                                     <p><strong>¡El festival se realiza LLUEVA O TRUENE! 🌧️☀️</strong></p>
                                     <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-muted); line-height: 1.8;">
                                         <li style="margin-bottom: 0.75rem;">El Estadio Nacional tiene <strong>techo parcial retráctil</strong> que cubre graderías y zona VIP.</li>
-                                        <li style="margin-bottom: 0.75rem;">Zonas VIP, Meet & Greet, barras premium y food court <strong>tienen techo completo</strong>.</li>
+                                        <li style="margin-bottom: 0.75rem;">Zonas VIP, All Access, barras premium y food court <strong>tienen techo completo</strong>.</li>
                                         <li style="margin-bottom: 0.75rem;">Escenario principal tiene estructura cubierta para proteger equipos y artistas.</li>
                                         <li style="margin-bottom: 0.75rem;">Lleva <strong>impermeable o poncho</strong> (NO paraguas — riesgo de accidentes).</li>
                                         <li style="margin-bottom: 0.75rem;">Calzado cerrado y antideslizante <strong>muy recomendado</strong>.</li>
@@ -389,7 +385,7 @@ include "header.php";
                                         <li style="margin-bottom: 0.75rem;">La transferencia es inmediata; el nuevo QR llega al email del nuevo asistente.</li>
                                         <li style="margin-bottom: 0.75rem;"><strong>No se permiten transferencias el día del evento</strong> (12 diciembre).</li>
                                     </ul>
-                                    <p><strong>Meet & Greet:</strong> Requiere autorización previa del equipo de producción. Contactar a <a href="mailto:produccion@festivalurbano2026.com" style="color: var(--accent-primary);">produccion@festivalurbano2026.com</a> con 7 días de antelación mínimo. Sujeto a aprobación del artista.</p>
+                                    <p><strong>All Access:</strong> Requiere autorización previa del equipo de producción. Contactar a <a href="mailto:produccion@festivalurbano2026.com" style="color: var(--accent-primary);">produccion@festivalurbano2026.com</a> con 7 días de antelación mínimo. Sujeto a aprobación del artista.</p>
                                 </div>
                             </div>
                         </article>
@@ -426,7 +422,7 @@ include "header.php";
                                     <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-muted); line-height: 1.8;">
                                         <li style="margin-bottom: 0.75rem;"><strong>🚌 Buses Oficiales (ida y vuelta):</strong> Salidas desde 5 puntos GAM: San José (Parque Central), Alajuela (Parque Central), Heredia (Parque Central), Cartago (Parque Central), Desamparados (Municipalidad). Horarios: 13:00, 14:00, 15:00, 16:00. Regreso: 00:30, 01:30, 02:30. <strong>Costo: ₡5,000</strong>. Compra anticipada obligatoria en web. Cupos limitados.</li>
                                         <li style="margin-bottom: 0.75rem;"><strong>🚗 Uber Zona Oficial:</strong> Zona designada de pick-up/drop-off en costado este del estadio. Código <strong>FESTIVAL20</strong> = 20% off (usuarios nuevos) / 10% off (usuarios existentes). Tiempo estimado desde centro SJ: 25 min.</li>
-                                        <li style="margin-bottom: 0.75rem;"><strong>🅿️ Parqueo VIP:</strong> Incluido en entradas VIP y Meet & Greet (cupos limitados, 1 vehículo por entrada). Parqueo general público: ₡5,000 (sujeto a disponibilidad, reservar en web).</li>
+                                        <li style="margin-bottom: 0.75rem;"><strong>🅿️ Parqueo VIP:</strong> Incluido en entradas VIP y All Access (cupos limitados, 1 vehículo por entrada). Parqueo general público: ₡5,000 (sujeto a disponibilidad, reservar en web).</li>
                                         <li style="margin-bottom: 0.75rem;"><strong>♿ Accesibilidad:</strong> Buses adaptados (solicitar al comprar), zona drop-off accesible, baños adaptados, plataformas vista preferencial. Acompañante gratis para PCD (presentar carné CONAPDIS).</li>
                                     </ul>
                                     <p><strong>Recomendación:</strong> Usa buses oficiales o Uber. El tráfico alrededor del estadio será intenso. Llega con 2h de antelación mínimo.</p>
