@@ -72,10 +72,6 @@ include "header.php";
                 </aside>
             </div>
         </div>
-
-        <div class="scroll-indicator" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-        </div>
     </section>
 
     <!-- ============================================
@@ -86,7 +82,6 @@ include "header.php";
             <header class="section-header">
                 <span class="section-tag">Elige tu pase</span>
                 <h2 id="tix-title" class="section-title">Entradas</h2>
-                <p class="section-desc">Tres experiencias, una noche inolvidable. Precios finales con impuestos incluidos.</p>
             </header>
 
             <div class="tickets-grid">
@@ -172,7 +167,6 @@ include "header.php";
                     <form class="formulario-moderno" action="enviar.php" method="POST" novalidate>
                         <?php if (!empty($formErrors)): ?>
                             <div class="form-errors-summary" role="alert" aria-live="assertive">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
                                 <div>
                                     <strong>Por favor corrige los siguientes errores:</strong>
                                     <ul>
@@ -216,7 +210,7 @@ include "header.php";
 
                             <div class="form-group">
                                 <label for="edad">Edad <span class="requerido">*</span></label>
-                                <input type="number" id="edad" name="edad" placeholder="25" required min="16" max="99" autocomplete="off" aria-describedby="error-edad" value="<?php echo htmlspecialchars($formData['edad'] ?? ''); ?>" <?php echo in_array('La edad debe ser un número entre 16 y 99 años.', $formErrors) ? 'class="error"' : ''; ?>>
+                                <input type="number" id="edad" name="edad" placeholder="25" required min="18" max="99" autocomplete="off" aria-describedby="error-edad" value="<?php echo htmlspecialchars($formData['edad'] ?? ''); ?>" <?php echo in_array('La edad debe ser un may a 18 años.', $formErrors) ? 'class="error"' : ''; ?>>
                                 <span class="error-msg" id="error-edad" aria-live="polite"><?php 
                                     $edadErrors = array_filter($formErrors, fn($e) => str_starts_with($e, 'La edad'));
                                     echo htmlspecialchars(implode(' ', $edadErrors));
@@ -253,23 +247,6 @@ include "header.php";
                             ?></span>
                         </div>
 
-                        <div class="form-group hidden" id="artista_mg_group">
-                            <label for="artista_mg">Artista para Meet & Greet <span class="requerido">*</span></label>
-                            <select id="artista_mg" name="artista_mg" aria-describedby="error-artista_mg" <?php echo in_array('Debe seleccionar un artista para el Meet & Greet.', $formErrors) ? 'class="error"' : ''; ?>>
-                                <option value="">-- Selecciona artista --</option>
-                                <option value="feid" <?php echo ($formData['artista_mg'] ?? '') === 'feid' ? 'selected' : ''; ?>>Feid</option>
-                                <option value="milo_j" <?php echo ($formData['artista_mg'] ?? '') === 'milo_j' ? 'selected' : ''; ?>>Milo J</option>
-                                <option value="alvaro_diaz" <?php echo ($formData['artista_mg'] ?? '') === 'alvaro_diaz' ? 'selected' : ''; ?>>Álvaro Díaz</option>
-                                <option value="nicki_nicole" <?php echo ($formData['artista_mg'] ?? '') === 'nicki_nicole' ? 'selected' : ''; ?>>Nicki Nicole</option>
-                                <option value="duki" <?php echo ($formData['artista_mg'] ?? '') === 'duki' ? 'selected' : ''; ?>>Duki</option>
-                            </select>
-                            <span class="error-msg" id="error-artista_mg" aria-live="polite"><?php 
-                                $artErrors = array_filter($formErrors, fn($e) => str_starts_with($e, 'Debe seleccionar un artista'));
-                                echo htmlspecialchars(implode(' ', $artErrors));
-                            ?></span>
-                            <small class="form-hint">Solo aplica para categoría Meet & Greet</small>
-                        </div>
-
                         <div class="form-group checkbox-group" role="group" aria-labelledby="reglamento-label">
                             <input type="checkbox" id="reglamento" name="reglamento" required <?php echo in_array('Debe aceptar el reglamento para continuar.', $formErrors) ? 'class="error"' : ''; ?>>
                             <label for="reglamento" id="reglamento-label">
@@ -283,7 +260,6 @@ include "header.php";
 
                         <button type="submit" class="btn btn-primary btn-submit">
                             <span>Confirmar Inscripción</span>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="5 12 19 12"></polyline><polyline points="12 5 19 12 12 19"></polyline></svg>
                         </button>
                     </form>
                 </div>
@@ -513,23 +489,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         requestAnimationFrame(animate);
     });
-
-    // Toggle artista_mg field based on categoria
-    const categoriaSelect = document.getElementById('categoria');
-    const artistaGroup = document.getElementById('artista_mg_group');
-    
-    if (categoriaSelect && artistaGroup) {
-        function toggleArtista() {
-            const show = categoriaSelect.value === 'meet_greet';
-            artistaGroup.style.display = show ? 'block' : 'none';
-            const artistaSelect = document.getElementById('artista_mg');
-            if (artistaSelect) {
-                artistaSelect.required = show;
-            }
-        }
-        
-        categoriaSelect.addEventListener('change', toggleArtista);
-        toggleArtista(); // Estado inicial
-    }
 });
 </script>

@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             name: 'Álvaro Díaz',
             genre: 'Urbano · Alternativo · Latino',
-            image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&h=300&fit=crop&crop=face',
+            image: './img/AlvaroDiaz.jpg',
             badge: 'ESTRELLA',
             time: '18:30 · Escenario Principal',
             description: 'El puertorriqueño revoluciona la escena con su estilo único. Éxitos: "Problema", "Feliz", "Quizás", y su aclamado álbum "FELICISÍMO".'
@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             name: 'Nicki Nicole',
             genre: 'R&B · Trap · Pop',
-            image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&h=300&fit=crop&crop=face',
+            image: './img/NICOLE.jpg',
             badge: 'INVITADA',
             time: '17:15 · Escenario Principal',
             description: 'La argentina que fusiona R&B, trap y pop como nadie. Colaboraciones con Bizarrap, Duki, Bad Bunny. Álbum "Parte De Mí".'
@@ -220,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             name: 'Duki',
             genre: 'Trap · Reggaetón',
-            image: 'https://images.unsplash.com/photo-1531482615713-2b15b4f83f17?w=400&h=300&fit=crop&crop=face',
+            image: './img/duki.jpg',
             badge: 'INVITADO',
             time: '19:45 · Escenario Principal',
             description: 'El referente del trap argentino. "Goteo", "She Don\'t Give a FO", "Hitboy". Llenó estadios en toda Latinoamérica y España.'
@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             name: 'Tiago PZK',
             genre: 'Reggaetón · Pop · Urbano',
-            image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face',
+            image: './img/THIAGO.png',
             badge: 'APERTURA',
             time: '16:15 · Escenario Principal',
             description: 'Revelación argentina del 2023. "Entre Nosotros", "Salimo de Noche", "Cerca de Ti". Millones de streams globales.'
@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             name: 'Bizarrap',
             genre: 'Producer · Sesiones · Global',
-            image: 'https://images.unsplash.com/photo-1493225457124-a3eb161f15f7?w=400&h=300&fit=crop&crop=face',
+            image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&h=300&fit=crop&crop=face',
             badge: 'SORPRESA',
             time: '22:30 · Aparición Especial',
             description: 'El productor argentino #1 mundial. Music Sessions con Shakira, Quevedo, Residente, Peso Pluma. Aparición sorpresa confirmada.'

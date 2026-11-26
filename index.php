@@ -62,10 +62,6 @@ include "header.php";
                 </aside>
             </div>
         </div>
-
-        <div class="scroll-indicator" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-        </div>
     </section>
 
     <!-- ============================================

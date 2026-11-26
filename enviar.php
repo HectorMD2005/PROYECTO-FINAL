@@ -64,7 +64,7 @@ if ($telefono === "") {
 // 4. Edad (16-99)
 $edadInt = filter_var($edad, FILTER_VALIDATE_INT, ["options" => ["min_range" => 16, "max_range" => 99]]);
 if ($edadInt === false) {
-    $errores[] = "La edad debe ser un número entre 16 y 99 años.";
+    $errores[] = "La edad debe ser un mayor a 18 años.";
 }
 
 // 5. Cantidad (1-4)
@@ -78,14 +78,7 @@ if (!array_key_exists($categoria, $categoriasValidas)) {
     $errores[] = "Debe seleccionar una categoría de entrada válida.";
 }
 
-// 6. Artista Meet & Greet (obligatorio si categoría es meet_greet)
-if ($categoria === "meet_greet") {
-    if ($artistaMG === "" || !array_key_exists($artistaMG, $artistasMGValidos)) {
-        $errores[] = "Debe seleccionar un artista para el Meet & Greet.";
-    }
-}
-
-// 7. Reglamento
+// 6. Reglamento
 if (!$reglamento) {
     $errores[] = "Debe aceptar el reglamento para continuar.";
 }

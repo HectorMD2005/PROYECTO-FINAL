@@ -86,6 +86,12 @@
     /* Layout */
     --container-max: 1400px;
     --header-height: 80px;
+
+    /* Aliases for legacy inline styles in gracias.php */
+    --color-acento: var(--accent-primary);
+    --color-texto2: var(--text-primary);
+    --color-descripciones: var(--text-muted);
+    --radio-lg: var(--radius-lg);
 }
 
 /* ============================================
@@ -4358,6 +4364,218 @@ input, select, textarea { font-family: inherit; }
     .timeline-item { padding-left: calc(30px + var(--space-md) + 12px) !important; }
     .timeline-marker { left: 30px; }
     .timeline-content { padding: var(--space-lg); }
+}
+
+/* ============================================
+   GRACIAS PAGE SPECIFIC STYLES
+   ============================================ */
+
+.gracias-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: var(--space-2xl) var(--space-lg);
+    background: var(--grad-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(20px);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.gracias-container::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--grad-primary);
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+.gracias-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--grad-primary);
+    color: var(--text-primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-lg);
+    box-shadow: var(--shadow-glow), 0 0 0 4px rgba(168, 85, 247, 0.2);
+    animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.gracias-container h1 {
+    font-family: var(--font-display);
+    font-size: var(--fs-2xl);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-md);
+    line-height: 1.2;
+}
+
+.gracias-container h1 .nombre-inscrito {
+    background: var(--grad-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.gracias-container > p {
+    color: var(--text-secondary);
+    font-size: var(--fs-base);
+    margin-bottom: var(--space-md);
+    line-height: 1.7;
+}
+
+.gracias-detalle {
+    text-align: left;
+    margin-top: var(--space-xl);
+    padding-top: var(--space-xl);
+    border-top: 1px solid var(--border-subtle);
+}
+
+.gracias-detalle h3 {
+    font-family: var(--font-display);
+    font-size: var(--fs-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.detalle-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.detalle-item:last-child {
+    border-bottom: none;
+}
+
+.detalle-label {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+}
+
+.detalle-valor {
+    font-size: var(--fs-base);
+    color: var(--text-primary);
+    font-weight: 500;
+    word-break: break-word;
+}
+
+.hero-botones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    justify-content: center;
+    margin-top: var(--space-xl) !important;
+}
+
+/* Boton classes alias for gracias page */
+.boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    padding: 1rem 2.25rem;
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    border-radius: var(--radius-full);
+    transition: var(--transition-base);
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+}
+
+.boton::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--grad-primary);
+    opacity: 0;
+    transition: var(--transition-base);
+    z-index: -1;
+}
+
+.boton svg { width: 1.25em; height: 1.25em; flex-shrink: 0; }
+
+.boton-principal {
+    background: var(--grad-primary);
+    color: var(--text-primary);
+    box-shadow: 0 4px 24px rgba(168, 85, 247, 0.35);
+    border: none;
+}
+
+.boton-principal:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(168, 85, 247, 0.5), 0 0 0 4px rgba(168, 85, 247, 0.2);
+}
+
+.boton-principal:active { transform: translateY(-1px); }
+
+.boton-secundario {
+    background: rgba(255,255,255,0.05);
+    color: var(--text-primary);
+    border: 1px solid var(--border-subtle);
+    backdrop-filter: blur(10px);
+}
+
+.boton-secundario:hover {
+    background: rgba(168, 85, 247, 0.15);
+    border-color: var(--border-medium);
+    transform: translateY(-2px);
+}
+
+/* Responsive gracias */
+@media (max-width: 768px) {
+    .gracias-container {
+        padding: var(--space-xl) var(--space-md);
+        margin: var(--space-md);
+        border-radius: var(--radius-lg);
+    }
+    
+    .gracias-icon {
+        width: 64px;
+        height: 64px;
+        font-size: 2rem;
+    }
+    
+    .gracias-container h1 {
+        font-size: var(--fs-xl);
+    }
+    
+    .hero-botones {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-botones .boton {
+        width: 100%;
+        max-width: 300px;
+    }
 }
 
 /* ============================================

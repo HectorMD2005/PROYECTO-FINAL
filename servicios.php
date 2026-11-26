@@ -47,45 +47,23 @@ include "header.php";
                         <span>Estadio Nacional</span>
                     </div>
                 </div>
-
-                <div class="hero-buttons">
-                    <a href="#contenedorActividades" class="btn btn-primary">
-                        <span>Explorar programación</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="5 12 19 12"></polyline><polyline points="12 5 19 12 12 19"></polyline></svg>
-                    </a>
-                </div>
             </div>
 
             <div class="hero-visual">
                 <div class="hero-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=800&h=1000&fit=crop" alt="Festival stage at night" class="hero-image" loading="eager">
+                    <img src="./img/programa.png" alt="Festival stage at night" class="hero-image" loading="eager">
                 </div>
 
                 <aside class="floating-card floating-card-lineup" aria-label="Artistas confirmados">
                     <div class="floating-card-bg"></div>
                     <div class="floating-card-content">
                         <div class="floating-badge">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                             <span>8 Artistas Confirmados</span>
                         </div>
-                        <div class="floating-stats">
-                            <div class="stat-item">
-                                <div class="stat-number" data-count="2">0</div>
-                                <span class="stat-label">Escenarios</span>
-                            </div>
-                            <div class="stat-divider" aria-hidden="true"></div>
-                            <div class="stat-item">
-                                <div class="stat-number" data-count="10">0</div>
-                                <span class="stat-label">Actividades</span>
-                            </div>
                         </div>
                     </div>
                 </aside>
             </div>
-        </div>
-
-        <div class="scroll-indicator" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
         </div>
     </section>
 
@@ -96,8 +74,7 @@ include "header.php";
         <div class="contenedor">
             <header class="section-header">
                 <span class="section-tag">Programación musical</span>
-                <h2 id="lineup-title" class="section-title">LINEUP COMPLETO</h2>
-                <p class="section-desc">Diez actividades programadas · Dos escenarios simultáneos</p>
+                <h2 id="lineup-title" class="section-title">Diez actividades programadas · Dos escenarios simultáneos</h2>
             </header>
 
             <!-- CONTENEDOR DONDE JAVASCRIPT GENERA LAS CARDS -->
@@ -107,34 +84,26 @@ include "header.php";
 
             <!-- Leyenda de categorías -->
             <div id="leyenda" class="categories-legend" role="region" aria-label="Guía de categorías musicales">
-                <h3 class="legend-title">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                    Guía Rápida de Categorías
-                </h3>
                 <div class="legend-grid">
                     <article class="legend-item legend-headliners">
-                        <div class="legend-icon">🌟</div>
                         <div class="legend-info">
                             <strong>HEADLINERS</strong>
                             <small>Artistas principales · Escenario Principal</small>
                         </div>
                     </article>
                     <article class="legend-item legend-stars">
-                        <div class="legend-icon">🎤</div>
                         <div class="legend-info">
                             <strong>ESTRELLAS INTERNACIONALES</strong>
                             <small>Artistas invitados top · Escenario Principal</small>
                         </div>
                     </article>
                     <article class="legend-item legend-electronic">
-                        <div class="legend-icon">🎧</div>
                         <div class="legend-info">
                             <strong>ESCENARIO ELECTRÓNICO</strong>
                             <small>DJs continuos 16:00-02:00 · Escenario Secundario</small>
                         </div>
                     </article>
                     <article class="legend-item legend-general">
-                        <div class="legend-icon">🎪</div>
                         <div class="legend-info">
                             <strong>GENERAL / OTROS</strong>
                             <small>Apertura, cierre, actividades varias</small>
@@ -146,86 +115,6 @@ include "header.php";
     </section>
 
     <!-- ============================================
-         ENTRADAS - TIPOS DE PASE
-         ============================================ -->
-    <section class="tickets-section" id="entradas" aria-labelledby="tix-title">
-        <div class="contenedor">
-            <header class="section-header">
-                <span class="section-tag">Elige tu pase</span>
-                <h2 id="tix-title" class="section-title">Entradas</h2>
-                <p class="section-desc">Tres experiencias, una noche inolvidable. Precios finales con impuestos incluidos.</p>
-            </header>
-
-            <div class="tickets-grid">
-                <!-- General -->
-                <article class="ticket-card" data-tier="general">
-                    <div class="ticket-badge">MÁS VENDIDO</div>
-                    <div class="ticket-header">
-                        <h3>General</h3>
-                        <div class="ticket-price">
-                            <span class="currency">₡</span>
-                            <span class="amount">25,000</span>
-                        </div>
-                    </div>
-                    <ul class="ticket-benefits">
-                        <li>Acceso a ambos escenarios</li>
-                        <li>Food court + 4 barras</li>
-                        <li>Mercado urbano + activaciones</li>
-                        <li>Hidratación gratis (8 puntos)</li>
-                        <li>Punto médico Hospital CIMA</li>
-                    </ul>
-                    <a href="contacto.php" class="btn btn-outline" onclick="scrollToForm(); return false;">Seleccionar General</a>
-                </article>
-
-                <!-- VIP -->
-                <article class="ticket-card featured" data-tier="vip">
-                    <div class="ticket-badge ticket-badge-vip">RECOMENDADO</div>
-                    <div class="ticket-header">
-                        <h3>VIP Experience</h3>
-                        <div class="ticket-price">
-                            <span class="currency">₡</span>
-                            <span class="amount">55,000</span>
-                        </div>
-                    </div>
-                    <ul class="ticket-benefits">
-                        <li>Todo lo de General +</li>
-                        <li>Zona elevada vista preferencial</li>
-                        <li>Barra libre premium ilimitada</li>
-                        <li>Baños VIP + lockers gratis</li>
-                        <li>Entrada rápida + pulsera VIP</li>
-                        <li>Zona chill A/C + mesero</li>
-                    </ul>
-                    <a href="contacto.php" class="btn btn-primary" onclick="scrollToForm(); return false;">Seleccionar VIP</a>
-                </article>
-
-                <!-- Premium / Meet & Greet -->
-                <article class="ticket-card" data-tier="premium">
-                    <div class="ticket-badge ticket-badge-premium">EXCLUSIVO</div>
-                    <div class="ticket-header">
-                        <h3>Meet & Greet</h3>
-                        <div class="ticket-price">
-                            <span class="currency">₡</span>
-                            <span class="amount">120,000</span>
-                        </div>
-                    </div>
-                    <ul class="ticket-benefits">
-                        <li>Todo lo VIP +</li>
-                        <li>Meet & Greet con 1 artista top</li>
-                        <li>Foto pro + laminado numerado</li>
-                        <li>Merch exclusivo (hoodie+gorra)</li>
-                        <li>Acceso soundcheck (sujeto a disp.)</li>
-                        <li>Staff dedicado 1:10</li>
-                    </ul>
-                    <a href="contacto.php" class="btn btn-outline" onclick="scrollToForm(); return false;">Seleccionar Meet & Greet</a>
-                </article>
-            </div>
-
-            <p class="tickets-note">Preventa BAC Credomatic: 10% dto + 3 cuotas sin intereses · Métodos: Tarjeta, Transferencia, SINPE Móvil, Efectivo</p>
-        </div>
-    </section>
-
-
-    <!-- ============================================
          GASTRONOMÍA Y BEBIDAS
          ============================================ -->
     <section class="food-section" id="food" aria-labelledby="food-title">
@@ -233,14 +122,10 @@ include "header.php";
             <header class="section-header">
                 <span class="section-tag">Experiencia gastronómica</span>
                 <h2 id="food-title" class="section-title">SABORES QUE ACOMPAÑAN LA NOCHE</h2>
-                <p class="section-desc">Una experiencia culinaria tan diversa como el lineup</p>
             </header>
 
             <div class="food-grid" role="list">
                 <article class="food-card reveal" role="listitem">
-                    <div class="food-card-media">
-                        <div class="food-icon" style="background: linear-gradient(135deg, #8B4DFF 0%, #B58AFF 100%);">🌮</div>
-                    </div>
                     <div class="food-card-content">
                         <h3>Food Trucks Curados (15+)</h3>
                         <div class="food-meta">
@@ -261,9 +146,6 @@ include "header.php";
                 </article>
 
                 <article class="food-card reveal" role="listitem">
-                    <div class="food-card-media">
-                        <div class="food-icon" style="background: linear-gradient(135deg, #E28CFF 0%, #8B4DFF 100%);">🍻</div>
-                    </div>
                     <div class="food-card-content">
                         <h3>Barras Temáticas (4)</h3>
                         <div class="food-meta">
@@ -281,9 +163,6 @@ include "header.php";
                 </article>
 
                 <article class="food-card reveal" role="listitem">
-                    <div class="food-card-media">
-                        <div class="food-icon" style="background: linear-gradient(135deg, #B58AFF 0%, #E28CFF 100%);">💧</div>
-                    </div>
                     <div class="food-card-content">
                         <h3>Hidratación Gratuita</h3>
                         <div class="food-meta">
@@ -306,7 +185,6 @@ include "header.php";
             <header class="section-header">
                 <span class="section-tag">Seguridad y convivencia</span>
                 <h2 id="rules-title" class="section-title">DISFRUTA LA NOCHE CON RESPONSABILIDAD</h2>
-                <p class="section-desc">Para que todos disfrutemos de una experiencia segura, respetuosa e inolvidable</p>
             </header>
 
             <div class="rules-grid" role="list">
@@ -393,7 +271,6 @@ include "header.php";
             <header class="section-header">
                 <span class="section-tag">Cada momento tiene su ritmo</span>
                 <h2 id="schedule-title" class="section-title">CADA MOMENTO TIENE SU RITMO</h2>
-                <p class="section-desc">Resumen rápido de horarios por escenario</p>
             </header>
 
             <div class="schedule-table-wrapper">
