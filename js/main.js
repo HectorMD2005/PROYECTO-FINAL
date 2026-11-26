@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             name: 'Feid',
             genre: 'Reggaetón · Pop Latino',
-            image: 'https://images.unsplash.com/photo-1507838153414-b4b713384ebf?w=400&h=300&fit=crop&crop=face',
+            image: './img/Feid.jpg',
             badge: 'HEADLINER',
             time: '21:30 · Escenario Principal',
             description: 'El "Ferxxo" llega con sus éxitos mundiales: Feliz Cumpleaños Ferxxo, Hey Mor, Luna, Classy 101. El artista colombiano más escuchado del momento.'
@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             name: 'Milo J',
             genre: 'Trap · R&B · Reggaetón',
-            image: 'https://images.unsplash.com/photo-1493225457124-a3eb161f15f7?w=400&h=300&fit=crop&crop=face',
+            image: './img/Milo J.jpg',
             badge: 'ESTRELLA',
             time: '20:00 · Escenario Principal',
             description: 'La joven promesa argentina que conquista Latinoamérica. Hits como "Fruto", "Rara Vez", "Dispara" y su álbum "166".'
@@ -251,12 +251,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
-    function renderArtistsGrid() {
-        const grid = document.getElementById('artistsGrid');
-        if (!grid) return;
+    function renderArtistsCarousel() {
+        const track = document.getElementById('artistsTrack');
+        if (!track) return;
 
-        grid.innerHTML = artistsData.map((artist, index) => `
-            <article class="artist-card reveal" style="transition-delay: ${index * 0.08}s">
+        track.innerHTML = artistsData.map((artist, index) => `
+            <article class="artist-card reveal" style="transition-delay: ${index * 0.08}s" role="listitem">
                 <div class="artist-card-media">
                     <img src="${artist.image}" alt="${artist.name}" loading="lazy">
                     <span class="artist-card-badge">${artist.badge}</span>
@@ -272,11 +272,129 @@ document.addEventListener('DOMContentLoaded', () => {
             </article>
         `).join('');
 
-        // Re-observe new elements
-        grid.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+        // Re-observe new elements for scroll reveal
+        track.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // Initialize carousel after rendering
+        initArtistsCarousel();
     }
 
-    renderArtistsGrid();
+    // Carousel logic
+    function initArtistsCarousel() {
+        const track = document.getElementById('artistsTrack');
+        const prevBtn = document.querySelector('.carousel-prev');
+        const nextBtn = document.querySelector('.carousel-next');
+        const dotsContainer = document.getElementById('artistsDots');
+        
+        if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
+
+        const cards = track.querySelectorAll('.artist-card');
+        if (cards.length === 0) return;
+
+        // Create dots
+        dotsContainer.innerHTML = '';
+        const cardsArray = Array.from(cards);
+        cardsArray.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.className = 'carousel-dot' + (index === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', `Ir al artista ${index + 1}`);
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+
+        let currentSlide = 0;
+        let cardsPerView = getCardsPerView();
+        const gap = parseInt(window.getComputedStyle(document.getElementById('artistsTrack')).gap) || 24;
+
+        function getCardsPerView() {
+            if (window.innerWidth <= 768) return 1;
+            if (window.innerWidth <= 1200) return 2;
+            return 3;
+        }
+
+        function updateCarousel() {
+            cardsPerView = getCardsPerView();
+            const cardWidth = cardsArray[0].offsetWidth + gap;
+            const maxSlide = Math.max(0, cardsArray.length - cardsPerView);
+            currentSlide = Math.min(currentSlide, maxSlide);
+            
+            const translateX = -currentSlide * cardWidth;
+            track.style.transform = `translateX(${translateX}px)`;
+
+            // Update buttons
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide >= maxSlide;
+
+            // Update dots
+            const dots = dotsContainer.querySelectorAll('.carousel-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function goToSlide(index) {
+            const maxSlide = Math.max(0, cardsArray.length - getCardsPerView());
+            currentSlide = Math.max(0, Math.min(index, maxSlide));
+            updateCarousel();
+        }
+
+        function nextSlide() {
+            const maxSlide = Math.max(0, cardsArray.length - getCardsPerView());
+            if (currentSlide < maxSlide) {
+                currentSlide++;
+                updateCarousel();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateCarousel();
+            }
+        }
+
+        // Event listeners
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        // Keyboard navigation
+        track.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevSlide();
+            else if (e.key === 'ArrowRight') nextSlide();
+        });
+
+        // Touch/swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        track.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].clientX;
+        }, { passive: true });
+
+        track.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].clientX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) nextSlide();
+                else prevSlide();
+            }
+        }
+
+        // Handle resize
+        window.addEventListener('resize', () => {
+            updateCarousel();
+        });
+
+        // Initial update
+        updateCarousel();
+    }
+
+    renderArtistsCarousel();
 
     // ============================================
     // 7. PARALLAX HERO EFFECT (Subtle)

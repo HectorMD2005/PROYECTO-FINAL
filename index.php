@@ -5,12 +5,12 @@ include "header.php";
 
 <main>
 
-    <!-- ============================================
+<!-- ============================================
          HERO SECTION - Cinematic Split Layout
          ============================================ -->
     <section class="hero" aria-labelledby="evento-titulo">
         <div class="hero-bg" aria-hidden="true">
-            <img src="https://images.unsplash.com/photo-1507838153414-b4b713384ebf?w=1600&h=900&fit=crop" alt="" loading="eager">
+            <img src="/img/portada.png" alt="Festival ECOS DE MEDIA NOCHE 2026" loading="eager">
             <div class="hero-overlay"></div>
             <div class="hero-gradient-right"></div>
         </div>
@@ -43,7 +43,7 @@ include "header.php";
 
             <div class="hero-visual">
                 <div class="hero-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1507838153414-b4b713384ebf?w=800&h=1000&fit=crop&crop=face" alt="Festival experience" class="hero-image" loading="eager">
+                    <img src="/img/portada.png" alt="Festival ECOS DE MEDIA NOCHE 2026" class="hero-image" loading="eager">
                 </div>
 
                 <aside class="floating-card" aria-label="Asistentes confirmados">
@@ -165,7 +165,7 @@ include "header.php";
             <div class="experience-grid">
                 <article class="exp-card">
                     <div class="exp-media">
-                        <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=800&h=600&fit=crop" alt="Crowd enjoying festival" loading="lazy">
+                        <img src="./img/portada.png" alt="Crowd enjoying festival" loading="lazy">
                     </div>
                     <div class="exp-content">
                         <h3>Escenario Principal</h3>
@@ -180,7 +180,7 @@ include "header.php";
 
                 <article class="exp-card reverse">
                     <div class="exp-media">
-                        <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=800&h=600&fit=crop" alt="VIP area" loading="lazy">
+                        <img src="/img/portada.png" alt="VIP area" loading="lazy">
                     </div>
                     <div class="exp-content">
                         <h3>Zona VIP Premium</h3>
@@ -195,7 +195,7 @@ include "header.php";
 
                 <article class="exp-card">
                     <div class="exp-media">
-                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&h=600&fit=crop" alt="Food and drinks" loading="lazy">
+                        <img src=/img/portada.png alt="Food and drinks" loading="lazy">
                     </div>
                     <div class="exp-content">
                         <h3>Gastronomía & Coctelería</h3>
@@ -212,7 +212,7 @@ include "header.php";
     </section>
 
     <!-- ============================================
-         ARTISTS SECTION
+         ARTISTS SECTION - CAROUSEL
          ============================================ -->
     <section class="artists-section" id="artistas" aria-labelledby="art-title">
         <div class="contenedor">
@@ -222,9 +222,23 @@ include "header.php";
                 <p class="section-desc">8 artistas internacionales + escenario electrónico continuo</p>
             </header>
 
-            <div class="artists-grid" id="artistsGrid">
-                <!-- Generado desde JS -->
+            <div class="carousel-container" id="artistsCarousel" role="region" aria-label="Carrusel de artistas">
+                <button class="carousel-nav carousel-prev" aria-label="Artista anterior" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                
+                <div class="carousel-viewport" aria-live="polite">
+                    <div class="carousel-track" id="artistsTrack" role="list">
+                        <!-- Tarjetas generadas dinámicamente desde JS -->
+                    </div>
+                </div>
+                
+                <button class="carousel-nav carousel-next" aria-label="Siguiente artista">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
             </div>
+
+            <div class="carousel-dots" id="artistsDots" aria-label="Indicadores de artistas"></div>
 
             <div class="section-cta">
                 <a href="servicios.php" class="btn btn-secondary">Ver programa completo por horarios</a>
