@@ -35,8 +35,7 @@
             <a href="index.php" class="nav-link">Inicio</a>
             <a href="nosotros.php" class="nav-link">Nosotros</a>
             <a href="servicios.php" class="nav-link">Programa</a>
-            <a href="contacto.php" class="nav-link">Inscripciones</a>
-            <a href="contacto.php" class="nav-link nav-cta">Obtener entradas</a>
+            <a href="contacto.php" class="nav-link nav-cta">Inscripciones</a>
         </nav>
 
         <!-- Mobile Menu Toggle -->

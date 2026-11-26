@@ -168,11 +168,11 @@ include "header.php";
                         </div>
                     </div>
                     <ul class="ticket-benefits">
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Acceso a ambos escenarios</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Food court + 4 barras</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Mercado urbano + activaciones</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Hidratación gratis (8 puntos)</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Punto médico Hospital CIMA</li>
+                        <li>Acceso a ambos escenarios</li>
+                        <li>Food court + 4 barras</li>
+                        <li>Mercado urbano + activaciones</li>
+                        <li>Hidratación gratis (8 puntos)</li>
+                        <li>Punto médico Hospital CIMA</li>
                     </ul>
                     <a href="contacto.php" class="btn btn-outline" onclick="scrollToForm(); return false;">Seleccionar General</a>
                 </article>
@@ -188,12 +188,12 @@ include "header.php";
                         </div>
                     </div>
                     <ul class="ticket-benefits">
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Todo lo de General +</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Zona elevada vista preferencial</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Barra libre premium ilimitada</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Baños VIP + lockers gratis</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Entrada rápida + pulsera VIP</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Zona chill A/C + mesero</li>
+                        <li>Todo lo de General +</li>
+                        <li>Zona elevada vista preferencial</li>
+                        <li>Barra libre premium ilimitada</li>
+                        <li>Baños VIP + lockers gratis</li>
+                        <li>Entrada rápida + pulsera VIP</li>
+                        <li>Zona chill A/C + mesero</li>
                     </ul>
                     <a href="contacto.php" class="btn btn-primary" onclick="scrollToForm(); return false;">Seleccionar VIP</a>
                 </article>
@@ -209,12 +209,12 @@ include "header.php";
                         </div>
                     </div>
                     <ul class="ticket-benefits">
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Todo lo VIP +</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Meet & Greet con 1 artista top</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Foto pro + laminado numerado</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Merch exclusivo (hoodie+gorra)</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Acceso soundcheck (sujeto a disp.)</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Staff dedicado 1:10</li>
+                        <li>Todo lo VIP +</li>
+                        <li>Meet & Greet con 1 artista top</li>
+                        <li>Foto pro + laminado numerado</li>
+                        <li>Merch exclusivo (hoodie+gorra)</li>
+                        <li>Acceso soundcheck (sujeto a disp.)</li>
+                        <li>Staff dedicado 1:10</li>
                     </ul>
                     <a href="contacto.php" class="btn btn-outline" onclick="scrollToForm(); return false;">Seleccionar Meet & Greet</a>
                 </article>

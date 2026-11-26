@@ -18,7 +18,7 @@ include "header.php";
          ============================================ -->
     <section class="hero hero-contacto" aria-labelledby="contacto-hero-title">
         <div class="hero-bg" aria-hidden="true">
-            <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1600&h=900&fit=crop" alt="" loading="eager">
+            <img src="./img/entradas.png" alt="" loading="eager">
             <div class="hero-overlay"></div>
             <div class="hero-gradient-left"></div>
         </div>
@@ -51,7 +51,7 @@ include "header.php";
 
             <div class="hero-visual">
                 <div class="hero-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1507838153414-b4b713384ebf?w=800&h=1000&fit=crop&crop=face" alt="Festival experience" class="hero-image" loading="eager">
+                    <img src="./img/entradas.png" alt="Festival experience" class="hero-image" loading="eager">
                 </div>
 
                 <aside class="floating-card floating-card-stats" aria-label="Inscritos confirmados">
@@ -101,11 +101,11 @@ include "header.php";
                         </div>
                     </div>
                     <ul class="ticket-benefits">
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Acceso a ambos escenarios</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Food court + 4 barras</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Mercado urbano + activaciones</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Hidratación gratis (8 puntos)</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Punto médico Hospital CIMA</li>
+                        <li>Acceso a ambos escenarios</li>
+                        <li>Food court + 4 barras</li>
+                        <li>Mercado urbano + activaciones</li>
+                        <li>Hidratación gratis (8 puntos)</li>
+                        <li>Punto médico Hospital CIMA</li>
                     </ul>
                     <a href="#formulario" class="btn btn-outline" onclick="scrollToForm(); return false;">Seleccionar General</a>
                 </article>
@@ -121,12 +121,12 @@ include "header.php";
                         </div>
                     </div>
                     <ul class="ticket-benefits">
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Todo lo de General +</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Zona elevada vista preferencial</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Barra libre premium ilimitada</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Baños VIP + lockers gratis</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Entrada rápida + pulsera VIP</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Zona chill A/C + mesero</li>
+                        <li>Todo lo de General +</li>
+                        <li>Zona elevada vista preferencial</li>
+                        <li>Barra libre premium ilimitada</li>
+                        <li>Baños VIP + lockers gratis</li>
+                        <li>Entrada rápida + pulsera VIP</li>
+                        <li>Zona chill A/C + mesero</li>
                     </ul>
                     <a href="#formulario" class="btn btn-primary" onclick="scrollToForm(); return false;">Seleccionar VIP</a>
                 </article>
@@ -142,12 +142,12 @@ include "header.php";
                         </div>
                     </div>
                     <ul class="ticket-benefits">
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Todo lo VIP +</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Meet & Greet con 1 artista top</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Foto pro + laminado numerado</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Merch exclusivo (hoodie+gorra)</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Acceso soundcheck (sujeto a disp.)</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Staff dedicado 1:10</li>
+                        <li>Todo lo VIP +</li>
+                        <li>Meet & Greet con 1 artista top</li>
+                        <li>Foto pro + laminado numerado</li>
+                        <li>Merch exclusivo (hoodie+gorra)</li>
+                        <li>Acceso soundcheck (sujeto a disp.)</li>
+                        <li>Staff dedicado 1:10</li>
                     </ul>
                     <a href="#formulario" class="btn btn-outline" onclick="scrollToForm(); return false;">Seleccionar Meet & Greet</a>
                 </article>

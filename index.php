@@ -10,7 +10,7 @@ include "header.php";
          ============================================ -->
     <section class="hero" aria-labelledby="evento-titulo">
         <div class="hero-bg" aria-hidden="true">
-            <img src="/img/portada.png" alt="Festival ECOS DE MEDIA NOCHE 2026" loading="eager">
+            <img src="./img/portadaindex.png" alt="Festival ECOS DE MEDIA NOCHE 2026" loading="eager">
             <div class="hero-overlay"></div>
             <div class="hero-gradient-right"></div>
         </div>
@@ -36,14 +36,14 @@ include "header.php";
                 <div class="hero-buttons">
                     <a href="contacto.php" class="btn btn-primary">
                         <span>Conseguir entradas</span>
-                        <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="5 12 19 12"></polyline><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        
                     </a>
                 </div>
             </div>
 
             <div class="hero-visual">
                 <div class="hero-image-wrapper">
-                    <img src="/img/portada.png" alt="Festival ECOS DE MEDIA NOCHE 2026" class="hero-image" loading="eager">
+                    <img src="./img/portadaindex.png" alt="Festival ECOS DE MEDIA NOCHE 2026" class="hero-image" loading="eager">
                 </div>
 
                 <aside class="floating-card" aria-label="Asistentes confirmados">
@@ -129,17 +129,17 @@ include "header.php";
                     <h2 class="card-title">Últimos artistas anunciados</h2>
                     <div class="artists-grid">
                         <div class="artist-item">
-                            <img src="https://images.unsplash.com/photo-1507838153414-b4b713384ebf?w=120&h=120&fit=crop&crop=face" alt="Feid" class="artist-avatar" loading="lazy">
+                            <img src="./img/feid.jpg" alt="Feid" class="artist-avatar" loading="lazy">
                             <span class="artist-name">Feid</span>
                             <span class="artist-genre">Reggaetón · Pop</span>
                         </div>
                         <div class="artist-item">
-                            <img src="https://images.unsplash.com/photo-1493225457124-a3eb161f15f7?w=120&h=120&fit=crop&crop=face" alt="Milo J" class="artist-avatar" loading="lazy">
+                            <img src="./img/Milo J.jpg" alt="Milo J" class="artist-avatar" loading="lazy">
                             <span class="artist-name">Milo J</span>
                             <span class="artist-genre">Trap · R&B</span>
                         </div>
                         <div class="artist-item">
-                            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=120&h=120&fit=crop&crop=face" alt="Álvaro Díaz" class="artist-avatar" loading="lazy">
+                            <img src="./img/AlvaroDiaz.jpg" alt="Álvaro Díaz" class="artist-avatar" loading="lazy">
                             <span class="artist-name">Álvaro Díaz</span>
                             <span class="artist-genre">Urbano · Alt.</span>
                         </div>
@@ -158,8 +158,7 @@ include "header.php";
         <div class="contenedor">
             <header class="section-header">
                 <span class="section-tag">Qué te espera</span>
-                <h2 id="exp-title" class="section-title">La Experiencia</h2>
-                <p class="section-desc">Más que un festival, una noche que recordarás toda la vida</p>
+                <h2 id="exp-title" class="section-title">Más que un festival, una noche que recordarás toda la vida</h2>
             </header>
 
             <div class="experience-grid">
@@ -171,39 +170,39 @@ include "header.php";
                         <h3>Escenario Principal</h3>
                         <p>Producción visual y sonora de nivel mundial. Pantallas LED 8K, sonido Meyer Sound envolvente, pirotecnia sincronizada y lighting design que transforma cada canción en un momento único.</p>
                         <ul class="exp-features">
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Pantallas LED 8K curvas</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Sonido envolvente 360°</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Efectos pirotécnicos y láser</li>
+                            <li>Pantallas LED 8K curvas</li>
+                            <li>Sonido envolvente 360°</li>
+                            <li>Efectos pirotécnicos y láser</li>
                         </ul>
                     </div>
                 </article>
 
                 <article class="exp-card reverse">
                     <div class="exp-media">
-                        <img src="/img/portada.png" alt="VIP area" loading="lazy">
+                        <img src="./img/ZONAVIP.png" alt="VIP area" loading="lazy">
                     </div>
                     <div class="exp-content">
                         <h3>Zona VIP Premium</h3>
                         <p>Vista elevada privilegiada, barra libre de licores premium, baños exclusivos climatizados, lockers, zona chill con A/C y servicio de mesero. La forma más cómoda de vivir el festival.</p>
                         <ul class="exp-features">
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Barra libre premium ilimitada</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Baños VIP con A/C</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Entrada rápida sin filas</li>
+                            <li>Barra libre premium ilimitada</li>
+                            <li>Baños VIP con A/C</li>
+                            <li>Entrada rápida sin filas</li>
                         </ul>
                     </div>
                 </article>
 
                 <article class="exp-card">
                     <div class="exp-media">
-                        <img src=/img/portada.png alt="Food and drinks" loading="lazy">
+                        <img src="./img/GASTRO.png" alt="Food and drinks" loading="lazy">
                     </div>
                     <div class="exp-content">
                         <h3>Gastronomía & Coctelería</h3>
                         <p>15+ food trucks curados: tacos birria, bao buns, burgers angus, pizza napolitana, poké bowls, opciones veganas. 4 barras temáticas: Imperial, cocteles signature, zero alcohol, VIP premium.</p>
                         <ul class="exp-features">
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>15+ food trucks internacionales</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>4 barras temáticas especializadas</li>
-                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Hidratación gratuita en 8 puntos</li>
+                            <li>15+ food trucks internacionales</li>
+                            <li>4 barras temáticas especializadas</li>
+                            <li>Hidratación gratuita en 8 puntos</li>
                         </ul>
                     </div>
                 </article>
@@ -219,7 +218,7 @@ include "header.php";
             <header class="section-header">
                 <span class="section-tag">Lineup 2026</span>
                 <h2 id="art-title" class="section-title">Artistas Confirmados</h2>
-                <p class="section-desc">8 artistas internacionales + escenario electrónico continuo</p>
+
             </header>
 
             <div class="carousel-container" id="artistsCarousel" role="region" aria-label="Carrusel de artistas">
@@ -254,7 +253,6 @@ include "header.php";
             <header class="section-header">
                 <span class="section-tag">Dónde estamos</span>
                 <h2 id="loc-title" class="section-title">Ubicación</h2>
-                <p class="section-desc">Estadio Nacional de Costa Rica · Acceso fácil desde todo el GAM</p>
             </header>
 
             <div class="location-grid">
@@ -272,7 +270,6 @@ include "header.php";
 
                 <div class="location-info">
                     <article class="location-card">
-                        <div class="location-icon">📍</div>
                         <div>
                             <h3>Estadio Nacional</h3>
                             <p>La Sabana, San José, Costa Rica</p>
@@ -280,7 +277,6 @@ include "header.php";
                     </article>
 
                     <article class="location-card">
-                        <div class="location-icon">🅿️</div>
                         <div>
                             <h3>Parqueo VIP</h3>
                             <p>Incluido en VIP/M&G · General ₡5,000 (cupos limitados)</p>
@@ -288,7 +284,6 @@ include "header.php";
                     </article>
 
                     <article class="location-card">
-                        <div class="location-icon">♿</div>
                         <div>
                             <h3>Accesibilidad</h3>
                             <p>Buses adaptados, plataformas vista, baños adaptados, acompañante gratis</p>
@@ -296,7 +291,6 @@ include "header.php";
                     </article>
 
                     <article class="location-card">
-                        <div class="location-icon">🕐</div>
                         <div>
                             <h3>Puertas Abren</h3>
                             <p>16:00 · Llega 2h antes para mejor ubicación</p>
