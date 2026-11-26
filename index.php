@@ -125,7 +125,7 @@ include "header.php";
                     <h2 class="card-title">Últimos artistas anunciados</h2>
                     <div class="artists-grid">
                         <div class="artist-item">
-                            <img src="./img/feid.jpg" alt="Feid" class="artist-avatar" loading="lazy">
+                            <img src="./img/Feid.jpg" alt="Feid" class="artist-avatar" loading="lazy">
                             <span class="artist-name">Feid</span>
                             <span class="artist-genre">Reggaetón · Pop</span>
                         </div>

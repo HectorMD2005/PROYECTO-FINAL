@@ -49,14 +49,7 @@ include "header.php";
             <div class="detalle-item">
                 <span class="detalle-label">Total a pagar:</span>
                 <span class="detalle-valor"><strong>₡<?php echo number_format($d["total_pagar"], 0, ',', '.'); ?></strong></span>
-            </div>
-
-            <?php if ($d["categoria"] === "meet_greet" && $d["artista_mg_nombre"]): ?>
-            <div class="detalle-item">
-                <span class="detalle-label">Artista Meet & Greet:</span>
-                <span class="detalle-valor"><?php echo htmlspecialchars($d["artista_mg_nombre"]); ?></span>
-            </div>
-            <?php endif; ?>
+            </div>  
 
             <div class="detalle-item">
                 <span class="detalle-label">Correo de confirmación:</span>

@@ -178,6 +178,8 @@ include "header.php";
 
                         <div class="form-row">
                             <div class="form-group">
+
+                    <form action="enviar.php" method="POST">
                                 <label for="nombre">Nombre completo <span class="requerido">*</span></label>
                                 <input type="text" id="nombre" name="nombre" placeholder="Juan Pérez González" required autocomplete="name" maxlength="100" aria-describedby="error-nombre" value="<?php echo htmlspecialchars($formData['nombre'] ?? ''); ?>" <?php echo in_array('El nombre completo es obligatorio.', $formErrors) || in_array('El nombre debe tener al menos 3 caracteres.', $formErrors) || in_array('El nombre solo puede contener letras y espacios.', $formErrors) || in_array('El nombre no puede exceder 100 caracteres.', $formErrors) ? 'class="error"' : ''; ?>>
                                 <span class="error-msg" id="error-nombre" aria-live="polite"><?php 

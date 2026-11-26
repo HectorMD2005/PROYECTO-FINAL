@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 $categoriasValidas = [
     "general" => ["nombre" => "General", "precio" => 25000],
     "vip" => ["nombre" => "VIP Experience", "precio" => 55000],
-    "meet_greet" => ["nombre" => "Meet & Greet", "precio" => 120000]
+    "All_Access" => ["nombre" => "All Access", "precio" => 120000]
 ];
 
 $artistasMGValidos = [
@@ -61,8 +61,8 @@ if ($telefono === "") {
     $errores[] = "El teléfono debe tener exactamente 8 dígitos numéricos.";
 }
 
-// 4. Edad (16-99)
-$edadInt = filter_var($edad, FILTER_VALIDATE_INT, ["options" => ["min_range" => 16, "max_range" => 99]]);
+// 4. Edad (18-99)
+$edadInt = filter_var($edad, FILTER_VALIDATE_INT, ["options" => ["min_range" => 18, "max_range" => 99]]);
 if ($edadInt === false) {
     $errores[] = "La edad debe ser un mayor a 18 años.";
 }
