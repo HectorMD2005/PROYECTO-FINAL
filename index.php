@@ -5,9 +5,9 @@ include "header.php";
 
 <main>
 
-<!-- ============================================
+<!-- 
          HERO SECTION - Cinematic Split Layout
-         ============================================ -->
+          -->
     <section class="hero" aria-labelledby="evento-titulo">
         <div class="hero-bg" aria-hidden="true">
             <img src="./img/portadaindex.png" alt="Festival ECOS DE MEDIA NOCHE 2026" loading="eager">
@@ -49,12 +49,6 @@ include "header.php";
                 <aside class="floating-card" aria-label="Asistentes confirmados">
                     <div class="floating-card-bg"></div>
                     <div class="floating-card-content">
-                        <div class="avatars">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=60&h=60&fit=crop&crop=face" alt="" class="avatar" loading="lazy">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face" alt="" class="avatar" loading="lazy">
-                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&h=60&fit=crop&crop=face" alt="" class="avatar" loading="lazy">
-                            <span class="avatar-more">+12K</span>
-                        </div>
                         <div class="floating-stats">
                             <div class="stat-number" data-count="12847">0</div>
                         </div>
@@ -64,9 +58,9 @@ include "header.php";
         </div>
     </section>
 
-    <!-- ============================================
+    <!-- 
          OVERLAPPING CARDS SECTION
-         ============================================ -->
+          -->
     <section class="overlap-cards" aria-label="Destacados del festival">
         <div class="contenedor">
 
@@ -147,9 +141,9 @@ include "header.php";
         </div>
     </section>
 
-    <!-- ============================================
+    <!-- 
          EXPERIENCE SECTION
-         ============================================ -->
+          -->
     <section class="experience" id="experiencia" aria-labelledby="exp-title">
         <div class="contenedor">
             <header class="section-header">
@@ -206,9 +200,9 @@ include "header.php";
         </div>
     </section>
 
-    <!-- ============================================
+    <!-- 
          ARTISTS SECTION - CAROUSEL
-         ============================================ -->
+          -->
     <section class="artists-section" id="artistas" aria-labelledby="art-title">
         <div class="contenedor">
             <header class="section-header">
@@ -241,9 +235,9 @@ include "header.php";
         </div>
     </section>
 
-    <!-- ============================================
+    <!-- 
          LOCATION SECTION
-         ============================================ -->
+          -->
     <section class="location" id="ubicacion" aria-labelledby="loc-title">
         <div class="contenedor">
             <header class="section-header">

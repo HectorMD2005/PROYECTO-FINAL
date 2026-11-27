@@ -1,189 +1,114 @@
-/* ============================================
-   FESTIVAL URBANO 2026 - MAIN JAVASCRIPT
-   Vanilla ES6+ - No frameworks
-   ============================================ */
 
-document.addEventListener('DOMContentLoaded', () => {
 
-    // ============================================
-    // 1. MOBILE NAVIGATION
-    // ============================================
-    const menuToggle = document.querySelector('.menu-toggle');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const mobileOverlay = document.querySelector('.mobile-menu-overlay');
-    const mobileLinks = document.querySelectorAll('.mobile-menu .nav-link');
+document.addEventListener('DOMContentLoaded', () => { //Esta secccion lo que realiza es cargar toda la estructura antes de poder trabajarla (DOOM)
+    const btnMenu = document.querySelector("#btnMenu"); //Se define las constantes en el sistema con id unico
+    const menu = document.querySelector(".menu");//Se declara la variable buscando la clase .menu en el css
 
-    function openMenu() {
-        menuToggle.classList.add('active');
-        mobileMenu.classList.add('open');
-        mobileOverlay.classList.add('visible');
-        document.body.style.overflow = 'hidden';
-        menuToggle.setAttribute('aria-expanded', 'true');
-        // Focus first link for accessibility
-        setTimeout(() => mobileLinks[0]?.focus(), 300);
-    }
+    if (btnMenu && menu) {//se declara la condicional que se ejecuta siempre y cuando ambas se cumplan
+        btnMenu.addEventListener("click", () => { //el boton esta escuchando y esperando la accion click
+            menu.classList.toggle("abierto");//Si la clase no tiene clase abierto la agrega
+            btnMenu.classList.toggle("activo");//Si la clase no tiene abierto la agrega
+            const isOpen = menu.classList.contains("abierto"); //Se utiliza para deterinar una constante y comprueba si tiene una clase determinada
+            btnMenu.setAttribute("aria-expanded", isOpen);//setAtribute busca dentro del etiquete de esta forma con el area expanded determina que 
+            //desplega informacion ocualta y guardando si es true o false
+        });
 
-    function closeMenu() {
-        menuToggle.classList.remove('active');
-        mobileMenu.classList.remove('open');
-        mobileOverlay.classList.remove('visible');
-        document.body.style.overflow = '';
-        menuToggle.setAttribute('aria-expanded', 'false');
-        menuToggle.focus();
-    }
-
-    if (menuToggle) {
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
+        // Cerrar menú al seleccionar un enlace
+        const enlaces = menu.querySelectorAll("a");//Se esuna constan que selecciona todos los enlaces que coincidan y los guarda en la constante enlaces
+        enlaces.forEach(enlace => {//Se utiliza para recorrer todos los enlaces del arreglo formulado
+            enlace.addEventListener("click", () => { //el boton esta escuchando y esperando la accion click
+                menu.classList.remove("abierto"); //Se utiliza forzar y retirar la clase abierto del menu
+                btnMenu.classList.remove("activo"); //Se utiliza forzar y retirar la clase activo del boton
+                btnMenu.setAttribute("aria-expanded", "false"); //Actualiza el atributo de accesibilidad para indicar que el menú está cerrado
+            });
         });
     }
 
-    if (mobileOverlay) {
-        mobileOverlay.addEventListener('click', closeMenu);
-    }
+    // SCROLL REVEAL ANIMATIONS ANIMAICION DE APARICION DE LAS CARDS
 
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', closeMenu);
-    });
-
-    // Close on Escape
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && mobileMenu?.classList.contains('open')) {
-            closeMenu();
-        }
-    });
-
-    // ============================================
-    // 2. HEADER SCROLL EFFECT
-    // ============================================
-    const header = document.querySelector('.header');
-    let lastScroll = 0;
-    let ticking = false;
-
-    function updateHeader() {
-        const scrollY = window.scrollY;
-        if (scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-        lastScroll = scrollY;
-        ticking = false;
-    }
-
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            requestAnimationFrame(updateHeader);
-            ticking = true;
-        }
-    }, { passive: true });
-
-    // ============================================
-    // 3. SMOOTH SCROLL FOR ANCHOR LINKS
-    // ============================================
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if (targetId === '#' || targetId === '#0') return;
-
-            const target = document.querySelector(targetId);
-            if (target) {
-                e.preventDefault();
-                const headerHeight = header?.offsetHeight || 0;
-                const targetPos = target.getBoundingClientRect().top + window.scrollY - headerHeight;
-                window.scrollTo({ top: targetPos, behavior: 'smooth' });
-
-                // Update URL without scroll
-                history.pushState(null, '', targetId);
-            }
-        });
-    });
-
-    // ============================================
-    // 4. SCROLL REVEAL ANIMATIONS (IntersectionObserver)
-    // ============================================
     const revealElements = document.querySelectorAll('.reveal, .exp-card, .artist-card, .ticket-card, .location-card, .overlap-card, .section-header');
+    //se define la constante y se seleccionan todos lo elementos que que coincidan con esa clases
 
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                revealObserver.unobserve(entry.target);
+    const revealObserver = new IntersectionObserver((entries) => {//esta funciona declara la constante que almacena el vigilante
+        //IntersectionObserver es la herramienta nativa de java que permite vigiliar la visibilidad en pantalla con el entries se ejecuta cada que el articulo vigilado aparezca
+        entries.forEach(entry => { //Se utiliza en esta seccion para recorrer todo el arreglo de los elementos observados
+            if (entry.isIntersecting) { //como esto se compara si el elemento esta entrando o ya esta dentro del area observable
+                entry.target.classList.add('visible'); //Con esta seccion se complementa la seccion del CSS en la cual la establece como visible
+                revealObserver.unobserve(entry.target); //Con esta seccion deja de observar la animacion para que no se active nuevamente si ya aparecio
             }
         });
     }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.1, //en este caso lo que se realiza es que el observador vea el objeto cuando este lleve un 10 porciento de colision con el area observable
+        rootMargin: '0px 0px -50px 0px' //con respecto a esto lo que realiza modifica el area de observacion retrasando ligeramente el ingreso
     });
 
-    revealElements.forEach(el => {
-        el.classList.add('reveal');
-        revealObserver.observe(el);
+    revealElements.forEach(el => { //Se utiliza para recorrer todos los elementos del arreglo seleccionados
+        el.classList.add('reveal'); //Con esto agrega al elemento la clase revelar en el css para que se muestre
+        revealObserver.observe(el); //De esta forma se registra en el observador para que al ingresar active la clase
     });
 
-    // ============================================
-    // 5. COUNTDOWN TIMER
-    // ============================================
-    function initCountdown() {
+
+    // . CONTADOR TEMPORIZADOR
+
+    function initCountdown() { //Se declara la funcion a utilizar con el contador en el sistema
         // Festival date: December 12, 2026 16:00 (Costa Rica time UTC-6)
-        const festivalDate = new Date('2026-12-12T16:00:00-06:00').getTime();
-        const daysEl = document.getElementById('days');
-        const hoursEl = document.getElementById('hours');
-        const minutesEl = document.getElementById('minutes');
-        const secondsEl = document.getElementById('seconds');
+        const festivalDate = new Date('2026-12-12T16:00:00-06:00').getTime();//Se declara la constante de la fecha a utilizar con su respesectiva estructura
+        const daysEl = document.getElementById('days'); //Se declara la variable que se tomara en cuenta los dias restantes
+        const hoursEl = document.getElementById('hours'); //Se declara la variable que se tomara en cuenta las horas restantes
+        const minutesEl = document.getElementById('minutes'); //Se declara la variable que se tomara en cuenta los minutos restantes
+        const secondsEl = document.getElementById('seconds'); //Se declara la variable que se tomara en cuenta los segundos restantes
 
-        if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+        if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return; //Se utiliza para comparar que no falte ningun dato si no, no se ejecuta
 
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = festivalDate - now;
+        function updateCountdown() {//En este caso sera la funcion que aplicara los calculos para el contador
+            const now = new Date().getTime(); //Se utiliza para tomar la hora y fecha del dispositivo y convertirla a milisegundos
+            const distance = festivalDate - now; //Realiza el calculo con la constante ditance para calcular la diferencia de la fecha actual y la fecha establecida
 
-            if (distance < 0) {
+            if (distance < 0) {  //Comopara si la fecha del festival ya paso, si esto es asi asigna ceros en todos los contenedores anteriores
                 // Festival started or passed
                 daysEl.textContent = '00';
                 hoursEl.textContent = '00';
                 minutesEl.textContent = '00';
                 secondsEl.textContent = '00';
-                return;
+                return; //finalizando el proceso
             }
+            // Si ditance es mayor realiza los calculos matematicos  de esta forma el sistema va redondeando hacia abajo
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24)); //Se utiliza para calcular los dias
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); //Se utiliza para calcular las horas
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); //Se utiliza para calcular los minutos
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000); //Se utiliza para calcular los segundos
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Animate number changes
-            animateNumber(daysEl, days);
-            animateNumber(hoursEl, hours);
-            animateNumber(minutesEl, minutes);
-            animateNumber(secondsEl, seconds);
+            // Animate number changes 
+            animateNumber(daysEl, days); //Se llama a la funcion de animacion de numero lo que muestra dos parametros el elemento que se debe modificar y el numero numero calculado
+            animateNumber(hoursEl, hours); //Se llama a la funcion de animacion de numero lo que muestra dos parametros el elemento que se debe modificar y el numero numero calculado
+            animateNumber(minutesEl, minutes); //Se llama a la funcion de animacion de numero lo que muestra dos parametros el elemento que se debe modificar y el numero numero calculado
+            animateNumber(secondsEl, seconds); //Se llama a la funcion de animacion de numero lo que muestra dos parametros el elemento que se debe modificar y el numero numero calculado
         }
 
-        function animateNumber(el, newValue) {
-            const str = String(newValue).padStart(2, '0');
-            if (el.textContent !== str) {
-                el.style.transform = 'translateY(-10px)';
-                el.style.opacity = '0';
-                setTimeout(() => {
-                    el.textContent = str;
-                    el.style.transform = 'translateY(0)';
-                    el.style.opacity = '1';
-                }, 100);
+        function animateNumber(el, newValue) { // en este caso se define la funcion para la animacion y el seria el elemneto que contiene el numuero y el nuevo valor a usar
+            const str = String(newValue).padStart(2, '0'); // de esta forma convierte el numero calculo a texto y lo fuerza a tener dos digitos agregando ceros a la izquierda
+            if (el.textContent !== str) { //Se utiliza para comprar si los numeros son diferentes con los que se muestran
+                el.style.transform = 'translateY(-10px)'; //si esto es correcto realiza la animacion de traslazar en el eje y 10 pixeles
+                el.style.opacity = '0'; // realiza que el numero sea totlmente transparente durante 100 milisegundos el parpadeo que se visualiza al cambiar el numero
+                setTimeout(() => { //se programa la funcion que se ejecuta despues de un tiempo determinado
+                    el.textContent = str; //Esta seccion actualiza el numero que se muestra en pantalla
+                    el.style.transform = 'translateY(0)'; //Regresa el numero a su posicion original en pantalla
+                    el.style.opacity = '1'; //realiza la recupoeracion total de su opacidad
+                }, 100); //establece el retraso de 100 milisegundo en el proceso 0.1 segundos
             }
         }
 
         // Initial update
-        updateCountdown();
-
+        updateCountdown(); //se utiliza al cargar la pagina inicialmente ya que actualiza inmediatamente
         // Update every second
-        setInterval(updateCountdown, 1000);
+        setInterval(updateCountdown, 1000); //esto se ejecuta la funcion cada segundo para su actualizacion continua
     }
+    initCountdown(); //llama a la funcion inicial para comenzar con todo el proceso del contador
 
-    initCountdown();
 
-    // ============================================
-    // 6. ARTISTS GRID GENERATION
-    // ============================================
+    // TARJETAS DE ARTISTAS se generan desde el arreglo
+
     const artistsData = [
         {
             name: 'Feid',
@@ -250,13 +175,15 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'DJ Sets continuos con los mejores DJs locales e internacionales. Warm up, peak time y after party en un solo escenario.'
         }
     ];
+//CARRUSEL GENERACION 
+    function renderArtistsCarousel() {//Crea la funcion para la generacion del carrusel del artista contendor HTML
+        const track = document.getElementById('artistsTrack'); //busca el elemento HTML que tiene de id ArtistsTrack
+        if (!track) return; //Si no existe esta funcion la finaliza automaticamente en el sistema
 
-    function renderArtistsCarousel() {
-        const track = document.getElementById('artistsTrack');
-        if (!track) return;
-
-        track.innerHTML = artistsData.map((artist, index) => `
-            <article class="artist-card reveal" style="transition-delay: ${index * 0.08}s" role="listitem">
+        //Track es el contenedor inicial se utiliza para recorrer todos lo elementos almacenados en artistsdata
+        //la funcion .map genera un elemento nuevo por cada artista en este caso lo ingresa al index
+        track.innerHTML = artistsData.map((artist, index) => ` 
+            <article class="artist-card reveal" style="transition-delay: ${index * 0.08}s" role="listitem"> 
                 <div class="artist-card-media">
                     <img src="${artist.image}" alt="${artist.name}" loading="lazy">
                     <span class="artist-card-badge">${artist.badge}</span>
@@ -270,134 +197,34 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
             </article>
-        `).join('');
+        `).join('');//se utiliza para unificar las tarjetas en un texto HTML
 
         // Re-observe new elements for scroll reveal
-        track.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+        track.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el)); //Se recicla el proceso de observador y recorre todas los elementos del arreglo
+        //Observa el elemento cuando entre en pantalla para animarlo correspondientemente
 
         // Initialize carousel after rendering
-        initArtistsCarousel();
+        initArtistsCarousel(); //inicializacion del carrusel
     }
 
-    // Carousel logic
-    function initArtistsCarousel() {
-        const track = document.getElementById('artistsTrack');
-        const prevBtn = document.querySelector('.carousel-prev');
-        const nextBtn = document.querySelector('.carousel-next');
-        const dotsContainer = document.getElementById('artistsDots');
-        
-        if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
+    // Carousel logica
+function initArtistsCarousel() {// Se define la funcion a utilizar
+    const track = document.getElementById('artistsTrack'); //Se utiliza para extraer informacion del HTML tarjetas
+    const dotsContainer = document.getElementById('artistsDots'); //Se utiliza para extraer informacion del HTML indicadores inferiores
 
-        const cards = track.querySelectorAll('.artist-card');
-        if (cards.length === 0) return;
+    if (!track || !dotsContainer) return; //valida que todos existan si no finaliza la funcion
 
-        // Create dots
-        dotsContainer.innerHTML = '';
-        const cardsArray = Array.from(cards);
-        cardsArray.forEach((_, index) => {
-            const dot = document.createElement('button');
-            dot.className = 'carousel-dot' + (index === 0 ? ' active' : '');
-            dot.setAttribute('aria-label', `Ir al artista ${index + 1}`);
-            dot.addEventListener('click', () => goToSlide(index));
-            dotsContainer.appendChild(dot);
-        });
+    const cards = [...track.querySelectorAll('.artist-card')]; //busca todas las tarjetas que tengan la clase dentro de track
 
-        let currentSlide = 0;
-        let cardsPerView = getCardsPerView();
-        const gap = parseInt(window.getComputedStyle(document.getElementById('artistsTrack')).gap) || 24;
+    if (!cards.length) return; //si no existen finaliza el proceso para evitar errores
 
-        function getCardsPerView() {
-            if (window.innerWidth <= 768) return 1;
-            if (window.innerWidth <= 1200) return 2;
-            return 3;
-        }
-
-        function updateCarousel() {
-            cardsPerView = getCardsPerView();
-            const cardWidth = cardsArray[0].offsetWidth + gap;
-            const maxSlide = Math.max(0, cardsArray.length - cardsPerView);
-            currentSlide = Math.min(currentSlide, maxSlide);
-            
-            const translateX = -currentSlide * cardWidth;
-            track.style.transform = `translateX(${translateX}px)`;
-
-            // Update buttons
-            prevBtn.disabled = currentSlide === 0;
-            nextBtn.disabled = currentSlide >= maxSlide;
-
-            // Update dots
-            const dots = dotsContainer.querySelectorAll('.carousel-dot');
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
-            });
-        }
-
-        function goToSlide(index) {
-            const maxSlide = Math.max(0, cardsArray.length - getCardsPerView());
-            currentSlide = Math.max(0, Math.min(index, maxSlide));
-            updateCarousel();
-        }
-
-        function nextSlide() {
-            const maxSlide = Math.max(0, cardsArray.length - getCardsPerView());
-            if (currentSlide < maxSlide) {
-                currentSlide++;
-                updateCarousel();
-            }
-        }
-
-        function prevSlide() {
-            if (currentSlide > 0) {
-                currentSlide--;
-                updateCarousel();
-            }
-        }
-
-        // Event listeners
-        nextBtn.addEventListener('click', nextSlide);
-        prevBtn.addEventListener('click', prevSlide);
-
-        // Keyboard navigation
-        track.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') prevSlide();
-            else if (e.key === 'ArrowRight') nextSlide();
-        });
-
-        // Touch/swipe support
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        track.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].clientX;
-        }, { passive: true });
-
-        track.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].clientX;
-            handleSwipe();
-        }, { passive: true });
-
-        function handleSwipe() {
-            const swipeThreshold = 50;
-            const diff = touchStartX - touchEndX;
-            if (Math.abs(diff) > swipeThreshold) {
-                if (diff > 0) nextSlide();
-                else prevSlide();
-            }
-        }
-
-        // Handle resize
-        window.addEventListener('resize', () => {
-            updateCarousel();
-        });
-
-        // Initial update
-        updateCarousel();
-    }
-
+    let currentIndex = 0; //Almacena la posicion de la tarjeta actual se utiliza let porque el valor cambia
+    
+}
     renderArtistsCarousel();
-    // ============================================
-    // 6.1 PROGRAMA DE ACTIVIDADES - GENERADO DESDE ARREGLO
-    // ============================================
+
+    // PROGRAMA DE ACTIVIDADES - GENERADO DESDE ARREGLO
+
 
     const actividadesData = [
         {
@@ -457,23 +284,20 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     // Genera las tarjetas del programa en servicios.php.
-    function pintarActividades(lista) {
+    function pintarActividades(lista) { //se genera la funcion para poder utilizar las actividades en servicios
 
-        const contenedor = document.querySelector('#contenedorActividades');
+        const contenedor = document.querySelector('#contenedorActividades'); //selecciona 
 
         // En otras páginas no existe este contenedor; no se ejecuta nada.
         if (!contenedor) return;
 
-        contenedor.innerHTML = '';
+        contenedor.innerHTML = ''; //Primero limpia el contenedor para proceder con las asignaciones
 
-        lista.forEach((actividad, index) => {
+        lista.forEach((actividad, index) => { //Se recorre todos los elementos que tenga la etiqueta actividad en el index
 
-            const card = document.createElement('article');
-
-            card.className = 'lineup-card reveal';
-            card.setAttribute('role', 'listitem');
-
-            card.style.transitionDelay = `${index * 0.06}s`;
+            const card = document.createElement('article'); //Se genera la consntate y se crea la seccion de articulo para almacenar las tarjetas
+            card.className = 'lineup-card reveal'; // en este caso indetifica visualmente la tarjeta y permite aplicarle efectos del CSS
+            card.style.transitionDelay = `${index * 0.10}s`; //Se utiliza para retrasar la animacion de aparicion en pantalla 
 
             card.innerHTML = `
                 <div class="lineup-card-content">
@@ -491,231 +315,64 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
 
-            contenedor.appendChild(card);
+            contenedor.appendChild(card); //Iserta el elemento dentro del contenedor CARD antes solo existia en memoria
 
-            // Activa la animación de aparición de cada tarjeta.
+            // Activa la animación de aparición de cada tarjeta cuando este dentro del campo observable
             revealObserver.observe(card);
         });
     }
 
-    // Ejecutar la generación de las diez actividades.
+    // Ejecutar la generación de las 9 actividades.
     pintarActividades(actividadesData);
 
-    // ============================================
-    // 7. PARALLAX HERO EFFECT (Subtle)
-    // ============================================
-    const heroImage = document.querySelector('.hero-image');
-    const heroVisual = document.querySelector('.hero-visual');
-
-    if (heroImage && heroVisual && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
-        let tickingParallax = false;
-
-        function updateParallax() {
-            const scrollY = window.scrollY;
-            const heroHeight = document.querySelector('.hero')?.offsetHeight || 0;
-            const progress = Math.min(scrollY / heroHeight, 1);
-
-            if (progress < 1) {
-                const translateY = scrollY * 0.3;
-                const scale = 1 + progress * 0.05;
-                heroVisual.style.transform = `translateY(${translateY}px)`;
-                heroImage.style.transform = `scale(${scale})`;
-            }
-            tickingParallax = false;
-        }
-
-        window.addEventListener('scroll', () => {
-            if (!tickingParallax) {
-                requestAnimationFrame(updateParallax);
-                tickingParallax = true;
-            }
-        }, { passive: true });
-    }
-
-    // ============================================
-    // 8. TICKET CARD HOVER ENHANCEMENT
-    // ============================================
-    document.querySelectorAll('.ticket-card').forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.borderColor = 'var(--border-medium)';
-        });
-        card.addEventListener('mouseleave', () => {
-            card.style.borderColor = '';
-        });
-    });
-
-    // ============================================
-    // 9. FLOATING CARD INTERACTION
-    // ============================================
-    const floatingCard = document.querySelector('.floating-card');
-    if (floatingCard) {
-        floatingCard.addEventListener('mouseenter', () => {
-            floatingCard.style.transform = 'translateY(-4px)';
-            floatingCard.style.boxShadow = 'var(--shadow-lg), var(--shadow-glow-strong)';
-        });
-        floatingCard.addEventListener('mouseleave', () => {
-            floatingCard.style.transform = '';
-            floatingCard.style.boxShadow = '';
-        });
-    }
-
-    // ============================================
-    // 10. ACTIVE NAV LINK HIGHLIGHT
-    // ============================================
-    const currentPage = window.location.pathname.split('/').pop() || 'index.php';
-    document.querySelectorAll('.nav-link, .mobile-menu .nav-link').forEach(link => {
-        const href = link.getAttribute('href');
-        if (href === currentPage || (currentPage === '' && href === 'index.php')) {
-            link.classList.add('active');
-            link.setAttribute('aria-current', 'page');
-        }
-    });
-
-    // ============================================
-    // 11. FORM SCROLL HELPER (Global)
-    // ============================================
-    window.scrollToForm = function() {
-        const form = document.querySelector('#formulario') || document.querySelector('.formulario-inscripcion');
-        if (form) {
-            const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
-            const targetPos = form.getBoundingClientRect().top + window.scrollY - headerHeight - 20;
-            window.scrollTo({ top: targetPos, behavior: 'smooth' });
-            form.focus({ preventScroll: true });
-        }
-    };
-
-    // ============================================
-    // 12. LAZY LOADING FALLBACK
-    // ============================================
-    if (!('loading' in HTMLImageElement.prototype)) {
-        const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-        const imageObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src || img.src;
-                    img.removeAttribute('loading');
-                    imageObserver.unobserve(img);
-                }
-            });
-        }, { rootMargin: '100px' });
-        lazyImages.forEach(img => imageObserver.observe(img));
-    }
-
-    // ============================================
-    // 13. PREVENT DOUBLE FORM SUBMIT
-    // ============================================
-    let formSubmitting = false;
-    document.querySelectorAll('form').forEach(form => {
-        form.addEventListener('submit', (e) => {
-            if (formSubmitting) {
-                e.preventDefault();
-                return false;
-            }
-            const submitBtn = form.querySelector('button[type="submit"], input[type="submit"]');
-            if (submitBtn && !submitBtn.disabled) {
-                formSubmitting = true;
-                const originalHTML = submitBtn.innerHTML;
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = '<svg class="spinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:1.25em;height:1.25em;animation:spin 1s linear infinite;margin-right:0.5rem;"><circle cx="12" cy="12" r="10" stroke-opacity="0.25"/><path d="M12 2a10 10 0 0 1 10 10" stroke-opacity="1"/></svg> Procesando...';
-                // Re-enable after 10s as safety
-                setTimeout(() => { formSubmitting = false; submitBtn.disabled = false; submitBtn.innerHTML = originalHTML; }, 10000);
-            }
-        });
-    });
-
-    // Add spinner keyframes
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        .countdown-number { transition: transform 0.15s ease, opacity 0.15s ease; }
-    `;
-    document.head.appendChild(style);
-
-});
-
-// ============================================
-// GLOBAL UTILITIES
-// ============================================
-
-// Debounce helper
-function debounce(fn, delay) {
-    let timeoutId;
-    return (...args) => {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => fn.apply(this, args), delay);
-    };
-}
-
-// Throttle helper
-function throttle(fn, limit) {
-    let inThrottle;
-    return (...args) => {
-        if (!inThrottle) {
-            fn.apply(this, args);
-            inThrottle = true;
-            setTimeout(() => inThrottle = false, limit);
-        }
-    };
-}
-
-// Check if element is in viewport
-function isInViewport(el, offset = 0) {
-    const rect = el.getBoundingClientRect();
-    return (
-        rect.top <= (window.innerHeight || document.documentElement.clientHeight) - offset &&
-        rect.bottom >= offset
-    );
-}
-
-// ============================================
 // ACCORDION HANDLING
-// ============================================
-function initAccordion() {
-    const accordionHeaders = document.querySelectorAll('.accordion-header');
-    
-    accordionHeaders.forEach(header => {
-        header.addEventListener('click', () => {
-            const item = header.closest('.accordion-item');
-            if (!item) return;
 
-            const isOpen = item.classList.contains('active');
+function initAccordion() {//Se inicializa la funcion a utilizar
 
-            // Close all other accordion items (single open behavior)
-            document.querySelectorAll('.accordion-item').forEach(other => {
-                if (other !== item) {
-                    other.classList.remove('active');
-                    const otherHeader = other.querySelector('.accordion-header');
-                    if (otherHeader) {
-                        otherHeader.setAttribute('aria-expanded', 'false');
+    const accordionHeaders = document.querySelectorAll('.accordion-header'); //Se define la variable a utilizar en el sistema y se selecciona todas las preguntas del acordeon
+    const accordionItems = document.querySelectorAll('.accordion-item'); //Se define la variable a utilizar y se selecciona todos los elementos del acordeon preguntas y respuestas
+
+    accordionHeaders.forEach(header => { //se recorre todo las preguntas del arreglo
+
+        header.addEventListener('click', () => { //La pregunta reaccion con la accion clic en el sobre ella
+
+            const item = header.closest('.accordion-item'); //busca el elemento padre más cercano con la clase .accordion-item.
+
+            if (!item) return; //Si no encuentra ninguno, termina la ejecución para evitar errores.
+
+            const isOpen = item.classList.contains('active'); //Si la tiene, significa que está abierto. Si no la tiene, significa que está cerrado.
+
+            // Cerrar los demás
+            accordionItems.forEach(other => { //se recorre todo las preguntas del arreglo
+
+                if (other !== item) { //se revisan los demas
+
+                    other.classList.remove('active'); //se cierran los que no son seleccionados retirando el active de la clase
+
+                    const otherHeader =
+                        other.querySelector('.accordion-header'); //Se selecciona la pregunta correspondeinte a cada elemento
+
+                    if (otherHeader) { //revisa que otro otherheader no este vacio
+                        otherHeader.setAttribute(// si lo anterior es correcto ejecuta las instrucciones dentro del if
+                            'aria-expanded', //lo reasigna de area expanded a false
+                            'false'
+                        );
                     }
                 }
             });
 
-            // Toggle current item
-            if (isOpen) {
-                item.classList.remove('active');
-                header.setAttribute('aria-expanded', 'false');
-            } else {
-                item.classList.add('active');
-                header.setAttribute('aria-expanded', 'true');
-            }
-        });
+            // Abrir o cerrar actual
+            item.classList.toggle('active', !isOpen); //Valida y compara dependiendo del estado anterior 
+            // si anteriormente tenia false agrega active, si tenia active agrega false
 
-        // Keyboard support
-        header.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                header.click();
-            }
+            header.setAttribute( //actualiza el atributo de la pregunta seleccionada
+                'aria-expanded',
+                !isOpen
+            );
+
         });
     });
-}
 
-// Initialize accordion on DOMContentLoaded
-document.addEventListener('DOMContentLoaded', () => {
-    initAccordion();
-});
+}
+initAccordion(); //ejecuta la funcion para poder ejecutar el acordeon
+})

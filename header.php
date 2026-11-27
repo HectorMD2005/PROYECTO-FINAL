@@ -25,34 +25,24 @@
 <body>
 
 <header class="header" role="banner">
-    <div class="header-inner">
-        <a href="index.php" class="logo" aria-label="Festival Urbano 2026 - Inicio">
-            FESTIVAL <span>URBANO</span> 2026
-        </a>
 
-        <!-- Desktop Navigation -->
-        <nav class="nav-desktop" aria-label="Navegación principal">
-            <a href="index.php" class="nav-link">Inicio</a>
-            <a href="nosotros.php" class="nav-link">Nosotros</a>
-            <a href="servicios.php" class="nav-link">Programa</a>
-            <a href="contacto.php" class="nav-link nav-cta">Inscripciones</a>
-        </nav>
+    <a href="index.php" class="logo" aria-label="Festival Urbano 2026 - Inicio">
+        FESTIVAL <span>URBANO</span> 2026
+    </a>
 
-        <!-- Mobile Menu Toggle -->
-        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </div>
+    <button class="navegacion" id="btnMenu" aria-label="Abrir menú" aria-expanded="false" aria-controls="mainNav">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav class="menu" id="mainNav" aria-label="Navegación principal">
+        <ul>
+            <li><a href="index.php" class="nav-link">Inicio</a></li>
+            <li><a href="nosotros.php" class="nav-link">Nosotros</a></li>
+            <li><a href="servicios.php" class="nav-link">Programa</a></li>
+            <li><a href="contacto.php" class="nav-link nav-cta">Inscripciones</a></li>
+        </ul>
+    </nav>
+
 </header>
-
-<!-- Mobile Menu Panel -->
-<div class="mobile-menu-overlay" id="mobileOverlay" aria-hidden="true"></div>
-<nav class="mobile-menu" id="mobileMenu" aria-label="Menú móvil">
-    <a href="index.php" class="nav-link">Inicio</a>
-    <a href="nosotros.php" class="nav-link">Nosotros</a>
-    <a href="servicios.php" class="nav-link">Programa</a>
-    <a href="contacto.php" class="nav-link">Inscripciones</a>
-    <a href="contacto.php" class="nav-link nav-cta">Obtener entradas</a>
-</nav>
