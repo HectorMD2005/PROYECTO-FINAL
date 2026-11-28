@@ -470,22 +470,22 @@ include "header.php";
 
 <!-- Scripts específicos de la página -->
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-    // Animate stat numbers in floating card
-    document.querySelectorAll('.floating-card-stats .stat-number').forEach(statNumber => {
-        const target = parseInt(statNumber.dataset.count);
-        let current = 0;
-        const duration = 2000;
-        const start = performance.now();
+document.addEventListener('DOMContentLoaded', () => { //Este proceso espera que todo el dom este cargado antes de proceder con las validaciones
+     // card animacion de numeros
+    document.querySelectorAll('.floating-card-stats .stat-number').forEach(statNumber => { //Se declara la variable a utilizar  buscando el primer elemento que coincida
+        const target = parseInt(statNumber.dataset.count); //Esta instruccion determina el numero al cual se desea llegar con la animacion
+        let current = 0; //Se determina la variable let porque el valor cambia no es una constante
+        const duration = 2000; //Se establece cuanto tiempo durara la animacion
+        const start = performance.now(); //Esta instruccion obtiene el momento exacto en el cual inicia la animacion
 
-        function animate(now) {
-            const progress = Math.min((now - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            current = Math.floor(target * eased);
-            statNumber.textContent = current.toLocaleString();
-            if (progress < 1) requestAnimationFrame(animate);
+        function animate(now) { //se declara la funcion para la generacion de la animacion del numero
+            const progress = Math.min((now - start) / duration, 1); //con esta operacion matematica calcula el porcentaje de la animacion
+            const eased = 1 - Math.pow(1 - progress, 3); //Estra seeccion se utiliza para realizar una acelaracion inicial y desaceleracion final al registro de la animacion
+            current = Math.floor(target * eased); //Calcula el numero que debe mostrarse en cada momento de la animacion
+            statNumber.textContent = current.toLocaleString(); //Muestra la informacion del numero en pantalla
+            if (progress < 1) requestAnimationFrame(animate); // Esta valida si el progreso ya se completo
         }
-        requestAnimationFrame(animate);
+        requestAnimationFrame(animate); // Esto solicita al navegador que vuelva a ejecutar la animacion al recargar la pagina
     });
 });
 </script>
